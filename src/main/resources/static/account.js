@@ -23,7 +23,7 @@ function loadUserInfo(user) {
 
 // Функция для загрузки гроубоксов пользователя
 function loadGrowboxes(userId) {
-    fetch(`http://localhost:8080/api/v1/device/devices/${userId}`)
+    fetch(`/api/v1/device/devices/${userId}`)
         .then(response => response.json())
         .then(devices => {
             const growboxesDiv = document.getElementById('user-growboxes');
@@ -76,7 +76,7 @@ function loadGrowboxes(userId) {
 
 // Функция для снятия измерений с устройства
 function takeMeasurements(deviceId) {
-    fetch(`http://localhost:8080/api/v1/indications/devices/take-measurements/${deviceId}`, {
+    fetch(`/api/v1/indications/devices/take-measurements/${deviceId}`, {
         method: 'POST',
     })
         .then(response => {
@@ -94,7 +94,7 @@ function takeMeasurements(deviceId) {
 
 // Функция для отображения измерений устройства
 function viewMeasurements(deviceId) {
-    fetch(`http://localhost:8080/api/v1/indications/findAllByDevice_indications/${deviceId}`)
+    fetch(`/api/v1/indications/findAllByDevice_indications/${deviceId}`)
         .then(response => response.json())
         .then(indications => {
             alert(`Измерения для устройства ${deviceId}:\n${indications.map(ind => `${ind.valueName}: ${ind.value}`).join('\n')}`);
@@ -106,7 +106,7 @@ function viewMeasurements(deviceId) {
 
 // Функция для отображения запчастей устройства
 function viewParts(deviceId) {
-    fetch(`http://localhost:8080/api/v1/device_detail/by_device/${deviceId}`)
+    fetch(`/api/v1/device_detail/by_device/${deviceId}`)
         .then(response => response.json())
         .then(parts => {
             alert(`Запчасти для устройства ${deviceId}:\n${parts.map(part => `${part.detail.name} x${part.count}`).join('\n')}`);
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Функция для добавления устройства
 function addDevice(userId, regcode) {
-    fetch(`http://localhost:8080/api/v1/device/save_random_device/${userId}/${regcode}`, {
+    fetch(`/api/v1/device/save_random_device/${userId}/${regcode}`, {
         method: 'POST',
     })
         .then(response => response.json())

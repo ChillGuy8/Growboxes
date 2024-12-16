@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Функция для загрузки всех гроубоксов
 function loadAllGrowboxes() {
-    fetch('http://localhost:8080/api/v1/device') // Используем существующий эндпоинт
+    fetch('/api/v1/device') // Используем существующий эндпоинт
         .then(response => response.json())
         .then(devices => {
             const uniqueDevices = getUniqueDevicesByName(devices);
@@ -103,7 +103,7 @@ function loadAllGrowboxes() {
 
 // Функция для загрузки деталей для каждого гроубокса
 function loadDeviceDetails(deviceId) {
-    fetch(`http://localhost:8080/api/v1/device_detail/by_device/${deviceId}`)
+    fetch(`/api/v1/device_detail/by_device/${deviceId}`)
         .then(response => response.json())
         .then(details => {
             const detailsList = document.getElementById(`device-details-${deviceId}`);
@@ -153,7 +153,7 @@ function getRequiredParts(growboxName) {
 
 // Функция для добавления нового гроубокса
 function addNewGrowbox(newGrowbox) {
-    fetch('http://localhost:8080/api/v1/device/save_device', {
+    fetch('/api/v1/device/save_device', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -181,7 +181,7 @@ function addPartToGrowbox(device_id, detail_id, count) {
         count: parseInt(count)
     };
 
-    fetch('http://localhost:8080/api/v1/device_detail/save_device_detail', {
+    fetch('/api/v1/device_detail/save_device_detail', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Функция для загрузки всех запчастей
 function loadAllParts() {
-    fetch('http://localhost:8080/api/v1/detail') // Используем эндпоинт для получения всех запчастей
+    fetch('/api/v1/detail') // Используем эндпоинт для получения всех запчастей
         .then(response => response.json())
         .then(parts => {
             const uniqueParts = getUniquePartsByName(parts);
@@ -76,7 +76,7 @@ function getUniquePartsByName(parts) {
 
 // Функция для добавления новой детали
 function addNewPart(newPart) {
-    fetch('http://localhost:8080/api/v1/detail/save_detail', {
+    fetch('/api/v1/detail/save_detail', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
