@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/v1/detail.xml
+  - include:
+      file: db/changelog/v1/user.xml
+  - include:
+      file: db/changelog/v1/device.xml
+  - include:
+      file: db/changelog/v1/indications.xml
+  - include:
+      file: db/changelog/v1/listOfDetail.xml
+  - include:
+      file: db/changelog/data/Detail-data.xml
+  - include:
+      file: db/changelog/data/User-data.xml
+  - include:
+      file: db/changelog/data/Device-data.xml
+  - include:
+      file: db/changelog/data/Indications-data.xml
+  - include:
+      file: db/changelog/data/ListOfDetail-data.xml
