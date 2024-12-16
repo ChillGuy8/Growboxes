@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/api/v1/detail")
+@CrossOrigin(origins = "https://growboxes.onrender.com")
 public class DetailController {
     @Autowired
     private DetailService service;

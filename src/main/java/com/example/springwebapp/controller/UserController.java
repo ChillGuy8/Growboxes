@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/users")
+@CrossOrigin(origins = "https://growboxes.onrender.com")
 public class UserController {
     @Autowired
     private UserService service;

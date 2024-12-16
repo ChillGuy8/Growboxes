@@ -18,6 +18,7 @@ import java.util.Random;
 
 @RestController
 @RequestMapping("/api/v1/device")
+@CrossOrigin(origins = "https://growboxes.onrender.com")
 public class DeviceController {
     @Autowired
     private DeviceService service;

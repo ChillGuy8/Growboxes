@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/device_detail")
+@CrossOrigin(origins = "https://growboxes.onrender.com")
 public class ListOfDetailController {
     @Autowired
     private ListOfDetailService service;

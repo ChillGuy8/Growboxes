@@ -16,6 +16,7 @@ import java.util.Random;
 
 @RestController
 @RequestMapping("/api/v1/indications")
+@CrossOrigin(origins = "https://growboxes.onrender.com")
 public class IndicationsController {
 
     @Autowired
