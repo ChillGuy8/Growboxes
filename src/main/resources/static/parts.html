@@ -22,6 +22,21 @@
     <div id="all-parts">
         <!-- Список всех уникальных запчастей будет загружаться здесь -->
     </div>
+
+    <!-- Кнопка для добавления детали видна только для админа -->
+    <button id="add-part-button" style="display:none;">Добавить деталь</button>
+
+    <!-- Форма для добавления детали -->
+    <div id="add-part-form" style="display:none;">
+        <h2>Добавить новую деталь</h2>
+        <label for="part-name">Название детали:</label>
+        <input type="text" id="part-name" required><br><br>
+
+        <label for="part-price">Цена:</label>
+        <input type="number" id="part-price" required><br><br>
+
+        <button id="submit-part-button">Добавить</button>
+    </div>
 </main>
 
 <script src="parts.js"></script> <!-- Подключаем JS для страницы запчастей -->

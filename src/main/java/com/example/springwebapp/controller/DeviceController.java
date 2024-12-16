@@ -30,6 +30,18 @@ public class DeviceController {
     }
     @PostMapping("save_device")
     public Device saveDevice(@RequestBody DeviceRequest device){
+
+        if (device.getRegcode() == null) {
+            String randomRegcode = "";
+            Random random = new Random();
+
+            for (int i = 0; i < 16; i++) {
+                randomRegcode += random.nextInt(0, 9);
+            }
+
+            device.setRegcode(randomRegcode);
+        }
+
         return service.saveDevice(device);
     }
     @PostMapping("save_random_device/{user_id}/{regcode}")

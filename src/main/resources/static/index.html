@@ -19,6 +19,30 @@
 
 <main>
     <h1>Все гроубоксы</h1>
+
+    <!-- Кнопка добавления нового гроубокса для администратора -->
+    <button id="add-growbox-button" style="display:none;">Добавить новый гроубокс</button>
+
+    <!-- Форма для добавления нового гроубокса -->
+    <div id="add-growbox-form" style="display:none;">
+        <h3>Добавить новый гроубокс</h3>
+        <form id="new-growbox-form">
+            <label for="name">Название:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="size">Размер:</label>
+            <input type="text" id="size" name="size" required><br><br>
+
+            <label for="price">Цена:</label>
+            <input type="number" id="price" name="price" required><br><br>
+
+            <label for="mode">Режим:</label>
+            <input type="text" id="mode" name="mode" required><br><br>
+
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+
     <div id="all-growboxes">
         <!-- Список всех гроубоксов будет загружаться здесь -->
     </div>

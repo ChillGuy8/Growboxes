@@ -1,5 +1,39 @@
 document.addEventListener('DOMContentLoaded', function () {
-    loadAllParts();
+    const user = JSON.parse(localStorage.getItem('user')); // Получаем пользователя из localStorage
+
+    if (!user) {
+        alert('Пользователь не авторизован!');
+        window.location.href = 'login.html'; // Перенаправление на страницу входа
+    } else {
+        loadAllParts();
+
+        // Проверка на корректность данных
+        console.log(user); // Для дебага
+
+        if (user.role === 'admin') {
+            // Показываем кнопку добавления новой детали только для admin
+            document.getElementById('add-part-button').style.display = 'block';
+
+            // Добавляем обработчик для кнопки добавления новой детали
+            document.getElementById('add-part-button').addEventListener('click', function() {
+                // Показываем форму для добавления детали
+                document.getElementById('add-part-form').style.display = 'block';
+            });
+
+            // Добавляем обработчик для отправки формы добавления новой детали
+            document.getElementById('submit-part-button').addEventListener('click', function(event) {
+                event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+                const newPart = {
+                    id: 0,
+                    name: document.getElementById('part-name').value,
+                    price: document.getElementById('part-price').value
+                };
+
+                addNewPart(newPart); // Отправляем данные на сервер
+            });
+        }
+    }
 });
 
 // Функция для загрузки всех запчастей
@@ -37,5 +71,26 @@ function getUniquePartsByName(parts) {
             return true;
         }
         return false;
+    });
+}
+
+// Функция для добавления новой детали
+function addNewPart(newPart) {
+    fetch('http://localhost:8080/api/v1/detail/save_detail', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newPart)
+    })
+    .then(response => response.json())
+    .then(part => {
+        alert('Деталь успешно добавлена!');
+        loadAllParts(); // Перезагружаем список запчастей
+        document.getElementById('add-part-form').style.display = 'none'; // Скрываем форму
+    })
+    .catch(error => {
+        console.error('Ошибка при добавлении новой детали:', error);
+        alert('Не удалось добавить деталь.');
     });
 }
