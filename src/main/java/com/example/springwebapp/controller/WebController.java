@@ -9,8 +9,8 @@ public class WebController {
 
     // Главная страница
     @GetMapping("/")
-    public String index() {
-        return "index";  // Отобразится файл "index.html" из папки templates
+    public String main() {
+        return "redirect:/login.html"; // Отобразится файл "index.html" из папки templates
     }
 
     // Страница входа
